@@ -1,0 +1,53 @@
+replicaCount: 1
+
+image:
+  repository: ghcr.io/benkelly/easyznab
+  tag: ""
+  pullPolicy: IfNotPresent
+
+imagePullSecrets: []
+nameOverride: ""
+fullnameOverride: ""
+
+service:
+  type: ClusterIP
+  port: 8080
+
+secret:
+  create: true
+  name: ""
+  annotations: {}
+  data:
+    PROXY_API_KEY: changeme
+    EASYNEWS_USER: ""
+    EASYNEWS_PASS: ""
+
+env: []
+envFrom: []
+
+resources: {}
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}
+
+podAnnotations: {}
+podLabels: {}
+
+serviceAccount:
+  create: false
+  name: ""
+  annotations: {}
+
+ingress:
+  enabled: false
+  className: ""
+  annotations: {}
+  hosts:
+    - host: easyznab.local
+      paths:
+        - path: /
+          pathType: Prefix
+  tls: []
